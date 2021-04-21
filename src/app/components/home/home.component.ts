@@ -9,10 +9,6 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    document.addEventListener("DOMContentLoaded", function(event) {
-      document.documentElement.setAttribute("data-theme", "dark");
-    });
-  }
+  ngOnInit(): void {}
 
 }

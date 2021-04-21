@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-theme-toggler',
@@ -9,12 +10,16 @@ export class ThemeTogglerComponent implements OnInit {
 
   isDarkTheme;
 
-  constructor() { }
+  constructor(@Inject (DOCUMENT) private doc: Document) {}
 
   ngOnInit(): void {
-    let theme = document.documentElement.getAttribute("data-theme");
-    console.log(document.documentElement);
-    
+    let dataTheme = this.doc.documentElement.dataset.theme;
+    dataTheme === 'dark' ? this.isDarkTheme = true : this.isDarkTheme = false;
   }
 
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+    let theme = this.isDarkTheme ? 'dark' : 'light';
+    this.doc.documentElement.setAttribute('data-theme', theme);
+  }
 }

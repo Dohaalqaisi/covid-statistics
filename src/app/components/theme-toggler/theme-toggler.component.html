@@ -1,4 +1,7 @@
-<div class="toggler-background">
-    <i class="fas fa-sun"></i>
-    <i class="fas fa-moon"></i>
+<div class="toggler-background" (click)="toggleTheme()">
+    <i *ngIf="isDarkTheme else moon" class="fas fa-sun"></i>
+
+    <ng-template #moon>
+        <i  class="fas fa-moon"></i>
+    </ng-template>
 </div>
